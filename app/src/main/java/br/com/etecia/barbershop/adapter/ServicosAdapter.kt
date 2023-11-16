@@ -1,21 +1,22 @@
 package br.com.etecia.barbershop.adapter
 
 import android.content.Context
+import br.com.etecia.barbershop.model.Servicos
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.etecia.barbershop.databinding.ServicosItemBinding
 
-class ServicosAdapter(private val context: Context, private val listaServicos: MutableList<Servico>):RecyclerView.Adapter<ServicosAdapter.ServicosViewHolder> {
-
-
+class ServicosAdapter(private val context: Context, private val listaServicos: MutableList<Servicos>):
+    RecyclerView.Adapter<ServicosAdapter.ServicosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServicosViewHolder {
-        val itemLista = ServicosItemBinding.inflate(LayoutInflater.from(context),parent,false)
+        val itemLista = ServicosItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ServicosViewHolder(itemLista)
     }
 
-    override fun getItemCount(): = listaServicos.size
+    override fun getItemCount(): Int {
+        return listaServicos.size
     }
 
     override fun onBindViewHolder(holder: ServicosViewHolder, position: Int) {
@@ -23,11 +24,8 @@ class ServicosAdapter(private val context: Context, private val listaServicos: M
         holder.txtServico.text = listaServicos[position].nome
     }
 
-    inner class ServicosViewHolder(binding: ServicosItemBinding): RecyclerView.ViewHolder(binding.root){
-        val imgServico = binding.imgServico
+    inner class ServicosViewHolder(binding: ServicosItemBinding): RecyclerView.ViewHolder(binding.root) {
+        val imgServico = binding.imgServicos
         val txtServico = binding.txtServico
-
-
     }
-
 }
